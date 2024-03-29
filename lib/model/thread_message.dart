@@ -8,7 +8,7 @@ class ThreadMessage {
   final String message;
   final DateTime timestamp;
   final List likes;
-  // final List comments;
+  final List comments;
 
   ThreadMessage({
     required this.id,
@@ -17,7 +17,7 @@ class ThreadMessage {
     required this.message,
     required this.timestamp,
     required this.likes,
-    // required this.comments,
+    required this.comments,
   });
 
   Map<String, dynamic> toMap() {
@@ -28,7 +28,7 @@ class ThreadMessage {
       'message': message,
       'timestamp': timestamp.millisecondsSinceEpoch,
       'likes': likes,
-      // 'comments': comments
+      'comments': comments
     };
   }
 
@@ -40,7 +40,7 @@ class ThreadMessage {
       message: map['message'] as String,
       timestamp: map['timestamp'] != null ? map['timestamp'].toDate() : DateTime.now(),
       likes: List.from((map['likes'] as List)),
-      // comments: List.from((map['comments'] as List)),
+      comments: List.from((map['comments'] as List)),
     );
   }
 
@@ -57,7 +57,7 @@ class ThreadMessage {
       message: '',
       timestamp: DateTime.now(),
       likes: [],
-      // comments: []
+      comments: []
     );
   }
 }
@@ -69,7 +69,7 @@ List<ThreadMessage> threadMessage = [
     message: "hi! how are you all today ?",
     timestamp: DateTime.now().subtract(const Duration(minutes: 30)),
     likes: [1,2],
-    // comments: [1,2]
+    comments: [1,2]
   ),  ThreadMessage(
 
     id: '2',
@@ -78,7 +78,7 @@ List<ThreadMessage> threadMessage = [
     message: "hi! how are you all today ?",
     timestamp: DateTime.now().subtract(const Duration(minutes: 30)),
     likes: [1,2],
-    // comments: [1,2]
+    comments: [1,2]
   ),  ThreadMessage(
 
     id: '3',
@@ -87,7 +87,7 @@ List<ThreadMessage> threadMessage = [
     message: "hi! how are you all today ?",
     timestamp: DateTime.now().subtract(const Duration(minutes: 30)),
     likes: [1,2],
-    // comments: [1,2]
+    comments: [1,2]
   ),  ThreadMessage(
 
     id: '4',
@@ -96,7 +96,7 @@ List<ThreadMessage> threadMessage = [
     message: "hi! how are you all today ?",
     timestamp: DateTime.now().subtract(const Duration(minutes: 30)),
     likes: [1,2],
-    // comments: [1,2]
+    comments: [1,2]
   ),  ThreadMessage(
 
     id: '5',
@@ -105,7 +105,7 @@ List<ThreadMessage> threadMessage = [
     message: "hi! how are you all today ?",
     timestamp: DateTime.now().subtract(const Duration(minutes: 30)),
     likes: [1,2],
-    // comments: [1,2]
+    comments: [1,2]
   ),  ThreadMessage(
 
     id: '6',
@@ -114,6 +114,6 @@ List<ThreadMessage> threadMessage = [
     message: "hi! how are you all today ?",
     timestamp: DateTime.now().subtract(const Duration(minutes: 30)),
     likes: [1,2],
-    // comments: [1,2]
+    comments: [1,2]
   ),
 ];

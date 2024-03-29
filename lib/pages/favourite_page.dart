@@ -96,7 +96,7 @@ class Favourite extends StatelessWidget {
                 // Center(child: Text,("All screen")),
                 Column(
                   children: [
-                    ...suggestedFollowers.map((e) => SuggestedFollowerWidget(follower: e)).toList(),
+                    // ...suggestedFollowers.map((e) => SuggestedFollowerWidget(follower: e)).toList(),
                   ],
                 ),
                 Center(child: Text("Nothing to see here yet")),

@@ -67,7 +67,26 @@ class ProfileController extends GetxController{
       }
     }
   }
+  Future<void> likeThreadMessage(String id) async {
+    try {
+      FirebaseFirestore.instance.collection("threads").doc(id).update({
+        'likes': FieldValue.arrayUnion([currentUser?.uid])
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
 
+  Future<void> dislikeThreadMessage(String id) async {
+    try {
+      FirebaseFirestore.instance.collection("threads").doc(id).update({
+        'likes': FieldValue.arrayRemove([currentUser?.uid])
+      });
+      print("hre");
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
 
 
 }

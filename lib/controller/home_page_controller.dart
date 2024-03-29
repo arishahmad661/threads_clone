@@ -38,7 +38,7 @@ class HomeController extends GetxController{
       return GetPageRoute(
         settings: settings,
         page: () => SearchPage(),
-        // binding: SearchBinding(),
+        binding: SearchPageBinding(),
       );
     }
 

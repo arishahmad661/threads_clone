@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:thread_new/controller/feed_controller.dart';
 import '../model/thread_message.dart';
 
 class ThreadMessageWidget extends StatelessWidget {
   ThreadMessage message;
-  ThreadMessageWidget({super.key, required this.message});
+  String messageId;
+  PanelController ctrl;
+  ThreadMessageWidget({super.key, required this.message, required this.messageId, required this.ctrl});
 
   @override
   Widget build(BuildContext context) {
+    final _feedCtrl = Get.find<FeedController>();
+
     String _getTimeDifference() {
       final now = DateTime.now();
       final difference = now.difference(message.timestamp as DateTime);
@@ -52,15 +59,25 @@ class ThreadMessageWidget extends StatelessWidget {
                           children: [
                             IconButton(
                                 onPressed: () {
-                                  // if(message.likes.contains(userId)){
-                                  //   onDislike();
-                                  // }else{
-                                  //   onLike();
-                                  // }
+                                  if(message.likes.contains(_feedCtrl.currentUser?.uid)){
+                                    _feedCtrl.dislikeThreadMessage(messageId);
+                                  }else{
+                                    _feedCtrl.likeThreadMessage(messageId);
+                                  }
                                 },
-                                icon: Icon(Icons.favorite_outline)),
+                                icon: message.likes.contains(_feedCtrl.currentUser?.uid)
+                                    ? const Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                )
+                                    : const Icon(
+                                  Icons.favorite_outline,
+                                ),),
                             IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  _feedCtrl.threadMessageId.value = messageId;
+                                  ctrl.open();
+                                },
                                 icon: const Icon(Icons.comment_outlined)),
                             IconButton(
                                 onPressed: () {},

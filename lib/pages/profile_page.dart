@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../Widgets/ThreadMessageWidget.dart';
@@ -146,20 +145,10 @@ class Profile extends StatelessWidget {
                                             itemBuilder: (context, index){
                                               final messageData = messages[index].data() as Map<String, dynamic>;
                                               ThreadMessage message = ThreadMessage.fromMap(messageData);
-                                              return ThreadMessageWidget(message: message);
-                                                // ThreadMessageWidget(
-                                                // message: messageData,
-                                                // comments: threadMessage[index].comments,
-                                                // likes: threadMessage[index].likes,
-                                                // senderName: messageData!.senderName,
-                                                // senderProfileImageUrl: messageData?.senderProfileImageUrl ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz8cLf8-P2P8GZ0-KiQ-OXpZQ4bebpa3K3Dw&usqp=CAU",
-                                                // message: messageData!.message,
-                                                // timestamp: messageData!.timestamp, id: '',
-                                                // likes: [],
-                                                // onDislike: _profileCtrl.dislikeThreadMessage(_profileCtrl.currentUser!.uid),
-                                                // onLike: _profileCtrl.dislikeThreadMessage(_profileCtrl.currentUser!.uid),
-                                                // comment: [],
-                                              // );
+                                              return ThreadMessageWidget(
+                                                message: message, messageId: messages[index].id,
+                                                ctrl: _profileCtrl.panelController,
+                                              );
                                             },
                                           );
                                         }

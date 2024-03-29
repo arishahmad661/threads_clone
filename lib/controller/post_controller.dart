@@ -32,7 +32,8 @@ class PostController extends GetxController {
           'message': msgController.text,
           'timestamp': FieldValue.serverTimestamp(),
           'senderProfileImageUrl': profileImageUrl.value,
-          'likes': []
+          'likes': [],
+          'comments': [],
         });
         msgController.clear();
         panelController.close();
